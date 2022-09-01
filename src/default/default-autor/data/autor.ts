@@ -1,0 +1,38 @@
+export const autor=[
+    {
+        
+    "id_aut":"",
+    "autor_name":"Platon",
+    "bio_aut":"Platon (en grec ancien Πλάτων / Plátôn / p l á. t ɔ ː n / ), né en 428 / 427 av. J.-C. et mort en 348 / 347 av. J.-C. à Athènes, est un philosophe antique de la Grèce classique, contemporain de la démocratie athénienne et des sophistes qu'il critiqua vigoureusement. Il reprit le travail philosophique de certains de ses prédécesseurs, notamment Socrate dont il fut l'élève, ainsi que Parménide, Héraclite et Pythagore, afin d'élaborer sa propre pensée. Celle-ci explore la plupart des champs importants, c'est-à-dire la métaphysique, l'éthique, l'esthétique et la politique. Son œuvre, composée presque exclusivement de dialogues, produit les premières formulations classiques des problèmes majeurs de l'histoire de la philosophie occidentale. Chaque dialogue de Platon est l'occasion d'interroger un sujet donné, ",
+    "image":"https://cdn.beweb.fr/medias/pic/663.jpg"
+},
+    {
+
+            "id_aut":"",
+            "autor_name":"Socrate",
+            "bio_aut":"Né en 469 av. J.C, d'un père sculpteur et d'une mère sage-femme, Socrate connaît la philosophie de la nature d'Anaxagore et d'Archélaos. Il s'éleva contre l'enseignement des sophistes. Socrate voulait éduquer les jeunes mais il ne fonda pas d'école, il passait sa vie à discuter dans les rues, les lieux publics avec des artisans, des hommes d'état, des artistes, des sophistes, des hétaïres, pour discuter du bien et du mal, comme investi d'une mission divine. Connais-toi toi-même affirmait-il. Platon et Xénophon, produiront plusieurs écrits sur ses enseignements. Il avait presque quarante ans quand il combattit comme hoplite pendant la guerre de Péloponnèse en 431. En 406 av. J.-C., Socrate devint le président du Conseil des Cinq Cents (la Boulê). Il vécut le déclin et la catastrophe d'Athènes en 405. A soixante-dix ans la démocratie lui intenta un procès pour athéisme. Il mourut en 399, condamné à boire la ciguë.",
+            "image":"https://cdn.beweb.fr/medias/pic/807.jpg"
+ 
+    },
+    {
+        
+        "id_aut":"",
+        "autor_name":"Friedrich Nietzsche",
+        "bio_aut":"Friedrich Wilhelm Nietzsche (souvent francisé en [ n i t͡ʃ ] ), né le 15 octobre 1844 à Röcken, en Prusse, et mort le 25 août 1900 à Weimar, en Saxe-Weimar-Eisenach, est un philosophe, critique culturel, compositeur, poète, écrivain et philologue allemand dont l'œuvre a exercé une profonde influence sur l'histoire intellectuelle moderne. Il commence sa carrière comme philologue classique avant de se tourner vers la philosophie. En 1869, à l'âge de 24 ans, il devient la plus jeune personnalité à occuper la chaire de philologie classique de l'université de Bâle. Il démissionne en 1879 en raison de problèmes de santé qui le tourmenteront presque toute sa vie, puis achève la plupart de ses écrits fondamentaux au cours de la décennie suivante. En 1889, à 44 ans, il est victime d'un effondrement et, par la suite, d'une perte totale de ses facultés mentales. Il vit ses dernières années sous la garde de sa mère, puis chez sa sœur Elisabeth Förster-Nietzsche. (Contenu soumis à la licence CC-BY-SA. Source : Article Friedrich Nietzsche de Wikipédia en français).",
+        "image":"https://cdn.beweb.fr/medias/pic/611.jpg"
+    },
+    {
+        
+        "id_aut":"",
+        "autor_name":"Epicure",
+        "bio_aut":" Epicure est un philosophe grec, né à Samos fin -342 ou début -341, mort en -270. Il est le fondateur, en 306 av. J.-C., de l'épicurisme, l'une des plus importantes écoles philosophiques de l'Antiquité. En physique, il soutient que tout ce qui est se compose d'atomes indivisibles. Les atomes se meuvent aléatoirement dans le vide et peuvent se combiner pour former des agrégats de matière. L'âme en particulier serait un de ces agrégats d'atomes, et non une entité spirituelle, notamment d'après son disciple Lucrèce. En éthique, le philosophe grec défend l'idée que le souverain bien est le plaisir, défini essentiellement comme « absence de douleur ». En logique ou épistémologie, Épicure considère que la sensation est à l'origine de toute connaissance et annonce ainsi l'empirisme.",
+        "image":"https://cdn.beweb.fr/medias/pic/294.jpg"
+    },
+    {
+        
+        "id_aut":"",
+        "autor_name":"Karl Marx",
+        "bio_aut":"Karl Heinrich Marx, né le 5 mai 1818 à Trèves en Rhénanie et mort le 14 mars 1883 à Londres, était un philosophe, économiste, théoricien socialiste, et écrivain allemand. Il est connu pour sa conception matérialiste de l'histoire, sa description des rouages du capitalisme, et pour son activité révolutionnaire au sein des organisations ouvrières en Europe (il a notamment participé à l'Association internationale des travailleurs). Il eut une grande influence sur le développement ultérieur de la sociologie. ",
+        "image":"data:image/jpeg;base64,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"
+    }
+]
