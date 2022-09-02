@@ -29,7 +29,7 @@ export class AutorController {
             })
    
         }
-@Get(':id')
+@Get('allCitation/:id')
 async all(@Param('id') id:any){
 
     const user= await this.adminService.findId(id)
