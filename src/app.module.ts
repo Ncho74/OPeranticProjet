@@ -11,7 +11,7 @@ import { DefaultCitationModule } from './default/default-citation/default-citati
 
 @Module({
   imports: [
-     MongooseModule.forRoot('mongodb://127.0.0.1:27017/visionSage'),
+     MongooseModule.forRoot('mongodb://localhost:27017/visionSage'),
      AdminModule,
      CitationModule,
      AutorModule,

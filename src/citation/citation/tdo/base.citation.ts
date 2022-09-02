@@ -3,4 +3,5 @@ export class CitationTdo{
     citation:string;
     favorite:boolean;
     id_aut:string;
+    user:string;
 }

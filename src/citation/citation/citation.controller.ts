@@ -9,7 +9,9 @@ export class CitationController {
     constructor(private readonly citationService:CitationService){}
     @Get()
     async index(){
-        return await this.citationService.findAll();
+        
+        const citations=await this.citationService.findAll();
+        return citations
     }
 
     @Post("addCitation")
