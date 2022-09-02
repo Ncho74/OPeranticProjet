@@ -1,11 +1,14 @@
 import { Controller ,Get,Body,Post, Param, Put, Delete, BadRequestException} from '@nestjs/common';
+import { AdminService } from 'src/admin/admin/admin.service';
 import { AutorService } from './autor.service';
 import { CreateAutor } from './tdo/create.autor';
 import { UpdateAutor } from './tdo/update.autor';
 
 @Controller('autor')
 export class AutorController {
-    constructor(private readonly autorService:AutorService){}
+    constructor(private readonly autorService:AutorService,
+      private readonly adminService:AdminService
+      ){}
     
  @Post("addAutor")
     async addAUtor(@Body() createAutor:CreateAutor){
@@ -26,9 +29,15 @@ export class AutorController {
             })
    
         }
-@Get()
-async all(){
-   return this.autorService.findAll()
+@Get(':id')
+async all(@Param('id') id:any){
+
+    const user= await this.adminService.findId(id)
+     const {_id}=user;
+         if(!user){
+            return ;
+         }
+   return this.autorService.findAll({user:_id})
 }
  @Delete(':id')
  async deleteAutor(@Param('id') id: string){

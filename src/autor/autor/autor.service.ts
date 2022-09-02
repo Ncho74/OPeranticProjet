@@ -8,8 +8,8 @@ import { UpdateAutor } from './tdo/update.autor';
 export class AutorService {
     constructor(@InjectModel(Autor.name) private readonly model:Model<AutorDocument>){}
 
-    async findAll():Promise <Autor[]>{
-        return this.model.find().exec()
+    async findAll(options:any):Promise <Autor[]>{
+        return this.model.find(options).exec()
     
       }
       async findId(id:string):Promise<Autor>{

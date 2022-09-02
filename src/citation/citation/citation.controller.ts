@@ -23,14 +23,12 @@ export class CitationController {
           }
           const {_id}=user
         const citations=await this.citationService.findAll({user:_id});
-            console.log(citations)
         return citations
     }
 
     @Post("addCitation")
     async create(@Body() createCitation:CreateCitation){
         const {citation}= createCitation
-        console.log(createCitation)
         const cit= await this.citationService.findOne({citation});
         if(cit){
            throw new BadRequestException('Cette Citation est dejà ajouter !')
