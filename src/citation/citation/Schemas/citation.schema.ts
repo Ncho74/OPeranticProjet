@@ -18,7 +18,7 @@ export class Citation{
     citation:string;
     @Prop([{ type: SchemaTypes.ObjectId, ref: Admin.name }])
     user:Types.ObjectId[];
-    @Prop([{ type: SchemaTypes.ObjectId, ref: Autor.name }])
+    @Prop({required:true})
     autor:string;
     @Prop({default:false})
     favorite:boolean;
