@@ -2,6 +2,6 @@ export class CitationTdo{
     theme_cit:string;
     citation:string;
     favorite:boolean;
-    id_aut:string;
+    autor:string;
     user:string;
 }

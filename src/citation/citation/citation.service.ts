@@ -1,8 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { WebSocketGateway } from '@nestjs/websockets';
-import { Server } from 'http';
-import { Model,PaginateModel} from 'mongoose';
+import { Model} from 'mongoose';
 import { Autor } from 'src/autor/autor/Schemas/autor.schema';
 import { Citation, CitationDocument } from './Schemas/citation.schema';
 import { CreateCitation } from './tdo/create.citation';
@@ -13,14 +11,13 @@ export class CitationService {
 
     constructor(
         @InjectModel(Citation.name) private readonly model:Model<CitationDocument>,
-        @InjectModel(Citation.name) private pag: PaginateModel<CitationDocument>,
         ) {}
   
     async findId(id:string):Promise<Citation>{
         return this.model.findById(id).exec()
     }
-     async findAll(){
-        return this.model.find().exec()
+     async findAll(options:any){
+        return this.model.find(options).populate({path:'autor',select:'autor_name'})
     }
     async deleteAll(){
       return this.model.deleteMany().exec()
@@ -50,16 +47,7 @@ export class CitationService {
         return  await this.model.find(options)
 
     }
-    async pagnition():Promise<any>{
-        return  await this.pag.find({},  {
-            page: Number(1),
-            limit: Number(10),
-          }).populate({
-            path:"id_aut",
-            select:'autor_name'
-          })
 
-    }
   
     
 }

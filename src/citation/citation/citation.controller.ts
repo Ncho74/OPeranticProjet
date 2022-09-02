@@ -3,20 +3,34 @@ import { CitationService } from './citation.service';
 import { CreateCitation } from './tdo/create.citation';
 import { UpdateCitation } from './tdo/update.citation';
 import{Request} from "express"
+import { AutorService } from 'src/autor/autor/autor.service';
+import { AdminService } from 'src/admin/admin/admin.service';
+import { JwtService } from '@nestjs/jwt';
 
 @Controller('citation')
 export class CitationController {
-    constructor(private readonly citationService:CitationService){}
-    @Get()
-    async index(){
-        
-        const citations=await this.citationService.findAll();
+    constructor(
+        private readonly citationService:CitationService,
+        private readonly autorService:AutorService,
+        private readonly adminService:AdminService,
+        private readonly jwtService:JwtService
+        ){}
+    @Get('listCitation/:id')
+    async index(@Param('id') id:any){
+        const user=await this.adminService.findId(id)
+          if(!user){
+            return ;
+          }
+          const {_id}=user
+        const citations=await this.citationService.findAll({user:_id});
+            console.log(citations)
         return citations
     }
 
     @Post("addCitation")
     async create(@Body() createCitation:CreateCitation){
         const {citation}= createCitation
+        console.log(createCitation)
         const cit= await this.citationService.findOne({citation});
         if(cit){
            throw new BadRequestException('Cette Citation est dejà ajouter !')

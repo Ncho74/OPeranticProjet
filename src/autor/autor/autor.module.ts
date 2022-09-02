@@ -8,6 +8,6 @@ import { Autor, AutorSchema } from './Schemas/autor.schema';
     imports:[MongooseModule.forFeature([{name:Autor.name,schema:AutorSchema}])],
     controllers:[AutorController],
     providers:[ AutorService],
-    exports:[AutorModule]
+    exports:[AutorModule, AutorService]
 })
 export class AutorModule {}

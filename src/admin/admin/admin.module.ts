@@ -11,7 +11,7 @@ import { JwtModule } from '@nestjs/jwt';
     JwtModule.register({ secret: 'secretKey', signOptions: { expiresIn: '1d' },})
 ],
     controllers:[AdminController],
-    providers:[AdminService],
-    exports:[AdminModule]
+    providers:[AdminService], 
+    exports:[AdminModule,AdminService]
 })
 export class AdminModule {}
