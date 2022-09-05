@@ -36,8 +36,8 @@ export class CitationController {
         return await this.citationService.create( createCitation);
     }
     @Get(":id")
-    async findId(@Param(':id') id:string){
-        return await this.citationService.findId(id);;
+    async findId(@Param('id') id:string){
+        return await this.citationService.findId(id);
     }
     @Put(':id')
     async update(@Param('id') id:string,@Body() updateCitation: UpdateCitation){
@@ -69,6 +69,15 @@ export class CitationController {
         }
         return data.exec()
     }
-
+@Get('favorits/:id')
+ async favorites(@Param('id')id:any){
+    const user=await this.adminService.findId(id)
+          if(!user){
+            return ;
+          }
+          const {_id}=user
+        const citations=await this.citationService.findAll({user:_id,favorite:true});
+        return citations
+ }
 
 }
