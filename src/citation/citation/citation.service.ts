@@ -45,7 +45,6 @@ export class CitationService {
     }
     async find(options:any):Promise<any>{
         return  await this.model.find(options)
-
     }
 
   

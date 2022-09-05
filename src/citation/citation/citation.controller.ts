@@ -76,8 +76,9 @@ export class CitationController {
             return ;
           }
           const {_id}=user
-        const citations=await this.citationService.findAll({user:_id,favorite:true});
+        const citations=await this.citationService.find({user:_id,favorite:true});
         return citations
+
  }
 
 }
