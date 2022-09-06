@@ -44,9 +44,12 @@ export class AdminController {
   //  }
    @Put(':id')
    async update(@Param('id') id:string,@Body() updateAdmin:UpdateAdmin){
-  
-    
-      return await this.adminService.update(id,updateAdmin)
+    const user=await this.adminService.findId(String(id));
+      if(!user){
+        return;
+      }
+
+      return await this.adminService.update(String(id),updateAdmin)
       
    
    } 
