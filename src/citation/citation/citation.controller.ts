@@ -80,5 +80,18 @@ export class CitationController {
         return citations
 
  }
+ @Get('dashbord/:id')
+ async dashbord(@Param('id') id:any){
+   const user=await this.adminService.findId(id)
+   if(!user){
+     return;
+   }
+   const {_id}=user;
+
+   const countCit=await this.citationService.countCit({user:_id});
+   const countAut=await this.autorService.countAut({user:_id})
+   return {nbrCit:countCit,nbrAutor:countAut}
+
+ }
 
 }

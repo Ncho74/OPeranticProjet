@@ -38,5 +38,8 @@ export class AutorService {
     async  deleteAll(){
       return await this.model.deleteMany()
     }
+    async countAut(options:any):Promise<Number>{
+      return await this.model.find(options).count()
+    }
 
 }

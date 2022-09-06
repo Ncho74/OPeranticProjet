@@ -20,6 +20,6 @@ import { Citation, CitationSchema } from './Schemas/citation.schema';
 ],
     controllers:[CitationController],
     providers:[CitationService,JwtService,],
-    exports:[CitationModule]
+    exports:[CitationModule,CitationService]
 })
 export class CitationModule {}

@@ -11,6 +11,9 @@ import { v4 as uuidv4 } from 'uuid';
 import { Observable } from 'rxjs';
 import {Response,Request} from 'express';
 import * as cookieParser from 'cookie-parser';
+import { AnyARecord } from 'dns';
+import { CitationService } from 'src/citation/citation/citation.service';
+import { AutorService } from 'src/autor/autor/autor.service';
 
 export const storage ={   storage: diskStorage({
   destination: './uploads',
@@ -31,7 +34,10 @@ export const editFileName = (req, file, callback) => {
 
 @Controller('admin')
 export class AdminController {
-  constructor(private readonly adminService:AdminService,private readonly jwtService:JwtService){}
+  constructor(
+    private readonly adminService:AdminService,
+    private readonly jwtService:JwtService,
+    ){}
   // @Get(':id')
   //  async find(@Param('id') id:string){
   //    return  await this.adminService.findId(id)
@@ -87,7 +93,7 @@ async login(@Body('email') email:string,@Body('password') password:string,@Res({
   if( !await bcrypt.compare(password, user.password)){
       throw new BadRequestException('email ou mot de passe incorrecte !')
   } 
-  const jwt=await this.jwtService.signAsync({id:user._id,pseudo:user.pseudo})
+   const jwt=await this.jwtService.signAsync({id:user._id,pseudo:user.pseudo})
 
      return {token:jwt}
   }
@@ -107,4 +113,5 @@ async login(@Body('email') email:string,@Body('password') password:string,@Res({
        throw new UnauthorizedException()
      }
   }
+
 }

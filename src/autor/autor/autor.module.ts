@@ -11,6 +11,6 @@ import { Autor, AutorSchema } from './Schemas/autor.schema';
     ],
     controllers:[AutorController],
     providers:[ AutorService],
-    exports:[AutorModule, AutorService]
+    exports:[AutorModule,AutorService]
 })
 export class AutorModule {}

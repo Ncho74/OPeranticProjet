@@ -46,7 +46,9 @@ export class CitationService {
     async find(options:any):Promise<any>{
         return  await this.model.find(options)
     }
-
+    async countCit(options:any):Promise<Number>{
+        return  await this.model.find(options).count()
+    }
   
     
 }

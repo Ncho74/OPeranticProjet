@@ -26,6 +26,8 @@ import { DefaultCitationModule } from './default/default-citation/default-citati
      DefaultAutorModule,
     DefaultCitationModule,
     AdminModule,
+    CitationModule,
+    AutorModule,
   ]
 })
 export class AppModule {}
