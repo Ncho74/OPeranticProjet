@@ -7,6 +7,7 @@ export type AutorDocument=Autor & Document
 @Schema()
 
 export class Autor{
+    _id:Types.ObjectId
     @Prop({required:true})
     autor_name:string;
     @Prop()

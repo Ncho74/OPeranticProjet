@@ -5,6 +5,7 @@ import { data } from './data/data';
 import { DefaultCitationService } from './default-citation.service';
 import {Request,Response} from 'express'
 import { UpdateDefaultCitation } from './tdo/update.citation.default';
+import { naturalCompare } from './compare.likes';
 @Controller('default-citation')
 export class DefaultCitationController {
     constructor(private readonly s:DefaultCitationService,private readonly s_aut:DefaultAutorService){}
@@ -81,10 +82,31 @@ async BackEnd(@Req() req: Request){
                      console.log("Erreur",err)
                   })
  }
- @Get(":id")
+ @Get("/find/:id")
  async getByid(@Param("id") id:string){
    return await this.s.findId(id)
  }
+    @Get('/favorites')
+    async getFavorite(){
+       let  data:any=[]
+       let favorites:any=[]
+        const list=await this.s.favoritesCitation()
+           data=list
+        data.sort((_val1:any,_val2:any)=>{
 
+             if(_val1.likes>_val2.likes ){
+             
+                return 1
+              }
+             if(_val1.likes<_val2.likes){
+                  return -1
+               }
+              
+             
+             
+        })
+        data.splice(1,80)
+        return data.reverse()
+      }
 }
 

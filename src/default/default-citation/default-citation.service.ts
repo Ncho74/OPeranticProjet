@@ -54,4 +54,14 @@ export class DefaultCitationService {
     find(options:any){
       return this.model.find(options)
     }
+    async favoritesCitation(){
+      const query =  this.model
+      .find().exec()
+   
+
+        
+        return (await query)
+    }
+    
 }
+

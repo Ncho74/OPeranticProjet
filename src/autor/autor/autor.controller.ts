@@ -45,6 +45,15 @@ async all(@Param('id') id:any){
 }
  @Delete(':id')
  async deleteAutor(@Param('id') id: string){
+   const aut=await this.autorService.findId(id)
+   if(!aut){
+      return ;
+   }
+   const {autor_name}=aut
+
+
+
+   await this.cit.remove({autor:autor_name})
     return this.autorService.delete(id)
  }
  @Put(":id")
