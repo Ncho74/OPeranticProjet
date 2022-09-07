@@ -1,5 +1,6 @@
-import { Controller ,Get,Body,Post, Param, Put, Delete, BadRequestException} from '@nestjs/common';
+import { Controller ,Get,Body,Post, Param, Put, Delete, BadRequestException, forwardRef, Inject} from '@nestjs/common';
 import { AdminService } from 'src/admin/admin/admin.service';
+import { CitationService } from 'src/citation/citation/citation.service';
 import { AutorService } from './autor.service';
 import { CreateAutor } from './tdo/create.autor';
 import { UpdateAutor } from './tdo/update.autor';
@@ -7,7 +8,10 @@ import { UpdateAutor } from './tdo/update.autor';
 @Controller('autor')
 export class AutorController {
     constructor(private readonly autorService:AutorService,
-      private readonly adminService:AdminService
+      private readonly adminService:AdminService,
+     
+      @Inject(forwardRef(() =>CitationService))
+      private readonly cit:CitationService,
       ){}
     
  @Post("addAutor")
