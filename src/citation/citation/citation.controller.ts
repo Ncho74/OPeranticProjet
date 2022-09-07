@@ -37,6 +37,13 @@ export class CitationController {
     }
     @Get(":id")
     async findId(@Param('id') id:string){
+        const citation= await this.citationService.findId(id);
+        const {autor}=citation;
+        return await this.autorService.findOne({autor_name:autor})
+    }
+    @Get("readCitation/:id")
+    async readById(@Param('id') id:string){
+       
         return await this.citationService.findId(id);
     }
     @Put(':id')
@@ -71,7 +78,7 @@ export class CitationController {
     }
 @Get('favorits/:id')
  async favorites(@Param('id')id:any){
-    const user=await this.adminService.findId(id)
+    const user=await this.adminService.findId(String(id))
           if(!user){
             return ;
           }
@@ -82,7 +89,7 @@ export class CitationController {
  }
  @Get('dashbord/:id')
  async dashbord(@Param('id') id:any){
-   const user=await this.adminService.findId(id)
+   const user=await this.adminService.findId(String(id))
    if(!user){
      return;
    }

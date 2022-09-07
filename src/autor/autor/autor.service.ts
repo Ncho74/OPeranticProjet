@@ -13,7 +13,7 @@ export class AutorService {
     
       }
       async findId(id:string):Promise<Autor>{
-          return this.model.findById(id).exec()
+          return this.model.findById(String(id)).exec()
       }
       async create(createAutor:CreateAutor):Promise<Autor>{
       

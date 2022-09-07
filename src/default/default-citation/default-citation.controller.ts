@@ -27,8 +27,8 @@ export class DefaultCitationController {
     }
     @Get()
     async fetchAll(){
-       return await this.s.findfirtsCitation(20)
-      // return await this.s.deleteAll()
+      return await this.s.findfirtsCitation(20)
+      //return await this.s.deleteAll()
     }
     @Post("posts")
     async post(){
