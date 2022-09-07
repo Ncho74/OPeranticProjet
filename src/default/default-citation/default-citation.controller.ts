@@ -82,14 +82,9 @@ async BackEnd(@Req() req: Request){
                      console.log("Erreur",err)
                   })
  }
- @Get("/find/:id")
- async getByid(@Param("id") id:string){
-   return await this.s.findId(id)
- }
     @Get('/favorites')
     async getFavorite(){
        let  data:any=[]
-       let favorites:any=[]
         const list=await this.s.favoritesCitation()
            data=list
         data.sort((_val1:any,_val2:any)=>{
