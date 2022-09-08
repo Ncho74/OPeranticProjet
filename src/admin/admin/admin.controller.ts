@@ -126,14 +126,14 @@ async login(@Body('email') email:string,@Body('password') password:string,@Res({
      }
      const playload={
        tel:user.tel,
-       user:user.pseudo,
+       speudo:user.pseudo,
        id:user._id
      }
 
      const jwt=await this.jwtService.signAsync(playload)
 
 
-     return  jwt
+     return  {jwt:jwt}
 
 
   }

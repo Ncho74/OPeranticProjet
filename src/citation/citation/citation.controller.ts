@@ -56,7 +56,7 @@ export class CitationController {
       }
     @Get("count")
     async count(){
-        return await this.citationService.count ();
+        return await this.citationService.count();
     }
     @Get("search")
     async search(@Req() req:Request){
