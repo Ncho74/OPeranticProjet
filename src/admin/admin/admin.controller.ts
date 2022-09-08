@@ -14,6 +14,7 @@ import * as cookieParser from 'cookie-parser';
 import { AnyARecord } from 'dns';
 import { CitationService } from 'src/citation/citation/citation.service';
 import { AutorService } from 'src/autor/autor/autor.service';
+import { ForgetPassword } from './tdo/forget-password';
 
 export const storage ={   storage: diskStorage({
   destination: './uploads',
@@ -36,7 +37,7 @@ export const editFileName = (req, file, callback) => {
 export class AdminController {
   constructor(
     private readonly adminService:AdminService,
-    private readonly jwtService:JwtService,
+    private readonly jwtService:JwtService
     ){}
   // @Get(':id')
   //  async find(@Param('id') id:string){
@@ -115,6 +116,26 @@ async login(@Body('email') email:string,@Body('password') password:string,@Res({
      catch(e){
        throw new UnauthorizedException()
      }
+  }
+@Post("forgetPassword")
+  async forgetPassword(@Body() forgetPassword:ForgetPassword):Promise<any>{
+    const {email}=forgetPassword
+    const user=await this.adminService.findOne({email})
+     if(!user){
+        throw new BadRequestException("Email invalide")
+     }
+     const playload={
+       tel:user.tel,
+       user:user.pseudo,
+       id:user._id
+     }
+
+     const jwt=await this.jwtService.signAsync(playload)
+
+
+     return  jwt
+
+
   }
 
 }

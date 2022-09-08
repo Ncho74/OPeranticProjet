@@ -37,6 +37,12 @@ export class CitationService {
        
       return await this.model.findByIdAndUpdate(id,updateCitation).exec();
     }
+    async updateByCit(id:string,data:any):Promise<Citation>{
+    
+  
+       
+        return await this.model.findByIdAndUpdate(id,data).exec();
+      }
     async delete(id:string):Promise<Citation>{
       return  await this.model.findByIdAndDelete(id).exec()
     }

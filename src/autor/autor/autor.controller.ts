@@ -58,7 +58,18 @@ async all(@Param('id') id:any){
  }
  @Put(":id")
  async updateAutor(@Param('id') id:string,@Body()updateAutor:UpdateAutor){
-    return this.autorService.update(id,updateAutor)
+    const aut=await this.autorService.findId(id)
+    const {autor_name}=aut
+    const act=await this.cit.find({autor:autor_name})
+    const up=updateAutor.autor_name
+    if(!act){
+      return;
+    }
+    const {_id}=act
+    await this.cit.updateByCit(_id,{autor:up})
+
+    return await this.autorService.update(id,updateAutor)
+
  }
  @Get(':id')
  async getAutor(@Param("id") id:string){
