@@ -24,7 +24,7 @@ export class AdminService {
       }
       async update(id:string,updateAdmin:UpdateAdmin):Promise<Admin>{
   
-
+        const {password}=updateAdmin
      
         return await this.model.findByIdAndUpdate(id,updateAdmin).exec();
       } 
@@ -49,6 +49,15 @@ export class AdminService {
      }
 
 
+  }
+  async updatePassword(id:any,data:any){
+    
+    const {password}=data
+    data.password=await bcrypt.hash(password,10)
+      
+
+     
+    return await this.model.findByIdAndUpdate(id,data).exec();
   }
 
 }

@@ -45,6 +45,7 @@ export class AdminController {
   //  }
    @Put(':id')
    async update(@Param('id') id:string,@Body() updateAdmin:UpdateAdmin){
+
     const user=await this.adminService.findId(String(id));
       if(!user){
         return;
@@ -101,7 +102,22 @@ async login(@Body('email') email:string,@Body('password') password:string,@Res({
 
      return {token:jwt}
   }
+@Put("resetPassword/:id")
+async resetPassword(@Param("id") id:any,@Body() data:any){
+   const user=await this.adminService.findId(id)
+   console.log(user)
+   if(!user){
+    return
+   }
 
+   return await this.adminService.updatePassword(id,data)
+   .then(()=>{
+      return {message:'Mot de passe reinitialiser avec success',success:true}
+   })
+  .catch((err)=>{
+    console.log(err)
+  })
+}
   @Get('user/:token')
   async user(@Param("token") token:any){
      try{
@@ -133,7 +149,7 @@ async login(@Body('email') email:string,@Body('password') password:string,@Res({
      const jwt=await this.jwtService.signAsync(playload)
 
 
-     return  {jwt:jwt}
+     return  {jwt:jwt,pseudo:user.pseudo}
 
 
   }
