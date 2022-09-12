@@ -56,8 +56,10 @@ export class DefaultCitationController {
     }
 @Get("author")
 async BackEnd(@Req() req: Request){
+  req.toString().replace('/','')
   let options={}
   if(req.query.author){
+    req.query.author.toString().split("/")
     options={
       $or:[
         {
@@ -69,7 +71,6 @@ async BackEnd(@Req() req: Request){
 
   }
   const data=await this.s.find(options)
-
   return data
 }
  @Put("/likes/:id")

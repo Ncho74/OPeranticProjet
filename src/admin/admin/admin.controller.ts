@@ -105,7 +105,6 @@ async login(@Body('email') email:string,@Body('password') password:string,@Res({
 @Put("resetPassword/:id")
 async resetPassword(@Param("id") id:any,@Body() data:any){
    const user=await this.adminService.findId(id)
-   console.log(user)
    if(!user){
     return
    }

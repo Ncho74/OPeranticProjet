@@ -23,6 +23,7 @@ export class CitationController {
           }
           const {_id}=user
         const citations=await this.citationService.findAll({user:_id});
+          
         return citations
     }
 

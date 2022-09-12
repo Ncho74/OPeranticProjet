@@ -37,6 +37,9 @@ export class DefaultAutorService {
        async deleteAll(){
           return await this.model.deleteMany().exec()
        }
+       async find(options:any){
+        return await this.model.find(options).exec()
+       }
       
         
 
