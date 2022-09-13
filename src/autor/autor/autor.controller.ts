@@ -1,25 +1,34 @@
 import { Controller ,Get,Body,Post, Param, Put, Delete, BadRequestException, forwardRef, Inject} from '@nestjs/common';
 import { AdminService } from 'src/admin/admin/admin.service';
 import { CitationService } from 'src/citation/citation/citation.service';
+import { DefaultAutorService } from 'src/default/default-autor/default-autor.service';
 import { AutorService } from './autor.service';
 import { CreateAutor } from './tdo/create.autor';
 import { UpdateAutor } from './tdo/update.autor';
 
 @Controller('autor')
 export class AutorController {
-    constructor(private readonly autorService:AutorService,
-      private readonly adminService:AdminService,
+    constructor(
+      private readonly autorDefault:DefaultAutorService,
      
+      private readonly autorService:AutorService,
+      private readonly adminService:AdminService,
+   
       @Inject(forwardRef(() =>CitationService))
       private readonly cit:CitationService,
       ){}
     
  @Post("addAutor")
     async addAUtor(@Body() createAutor:CreateAutor){
+       
+        const str =createAutor.autor_name
+        createAutor.autor_name= str.charAt(0).toUpperCase() + str.slice(1);
         const {autor_name}=createAutor
-
        const autor= await this.autorService.findOne({autor_name})
-
+       const defaultAutor= await this.autorDefault.findOne({autor_name})
+       if(defaultAutor){
+         throw new BadRequestException(`Impossible d\n'ajouter les Auteurs interne  comme ${autor_name}!`)
+       }
         if(autor){
             throw new BadRequestException('Cet auteur est dejà ajouter !')
                 

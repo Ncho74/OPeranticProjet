@@ -2,6 +2,7 @@ import { forwardRef, Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AdminModule } from 'src/admin/admin/admin.module';
 import { CitationModule } from 'src/citation/citation/citation.module';
+import { DefaultAutorModule } from 'src/default/default-autor/default-autor.module';
 import { AutorController } from './autor.controller';
 import { AutorService } from './autor.service';
 import { Autor, AutorSchema } from './Schemas/autor.schema';
@@ -10,6 +11,7 @@ import { Autor, AutorSchema } from './Schemas/autor.schema';
     imports:[MongooseModule.forFeature([{name:Autor.name,schema:AutorSchema}]),
     AdminModule,
     forwardRef(() => CitationModule),
+    DefaultAutorModule
     ],
     controllers:[AutorController],
     providers:[ AutorService,],
