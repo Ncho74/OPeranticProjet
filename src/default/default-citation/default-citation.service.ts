@@ -52,7 +52,7 @@ export class DefaultCitationService {
       }
 
     find(options:any){
-      return this.model.find(options)
+      return this.model.find(options).populate({path:"_id",select:'image'}).exec()
     }
     async favoritesCitation(){
       const query =  this.model

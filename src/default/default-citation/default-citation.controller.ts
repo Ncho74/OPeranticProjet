@@ -8,6 +8,10 @@ import { UpdateDefaultCitation } from './tdo/update.citation.default';
 import { naturalCompare } from './compare.likes';
 @Controller('default-citation')
 export class DefaultCitationController {
+   arrAut:any=[];
+   arrCit:any=[];
+   data:any=[];
+
     constructor(private readonly s:DefaultCitationService,private readonly s_aut:DefaultAutorService){}
     @Get("citation/:id")
     async show(@Param("id") id:string){
@@ -54,24 +58,25 @@ export class DefaultCitationController {
          
         }      
     }
-@Get("author")
-async BackEnd(@Req() req: Request){
-  req.toString().replace('/','')
-  let options={}
-  if(req.query.author){
-    req.query.author.toString().split("/")
-    options={
-      $or:[
-        {
-          autor: new RegExp(req.query.author.toString(),'i')
-        }
-      ]
+@Get("author/:author")
+async BackEnd(@Param('author') aut:any){
 
+  const dataCit=await this.s.find({autor:aut})
+const author=await this.s_aut.findAll()
+  this.arrAut=author;
+  this.arrAut.sort((val:any)=>{
+    if(val.autor_name===aut){
+      return 1
     }
-
-  }
-  const data=await this.s.find(options)
-  return data
+    else{
+      return -1
+    }
+  
+  })
+  this.arrAut.reverse().splice(1,5)
+  this.arrCit=dataCit
+  
+ return this.arrCit
 }
  @Put("/likes/:id")
  async likes(@Param("id") id:string,@Body() updateDefaultCitation:UpdateDefaultCitation){

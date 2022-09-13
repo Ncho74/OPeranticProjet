@@ -1,5 +1,6 @@
 import{Prop,Schema,SchemaFactory} from '@nestjs/mongoose'
-import { Document,Types } from 'mongoose';
+import { Document,SchemaTypes,Types } from 'mongoose';
+import { DefaultAutor } from 'src/default/default-autor/Schemas/Default.autor.schema';
 
 export type CitationDefaultDocument=DefaultCitation & Document
 
@@ -10,7 +11,7 @@ export class DefaultCitation{
     _id:Types.ObjectId;
     @Prop({required:true,unique:true})
     citation:string;
-    @Prop({required:true})
+    @Prop([{ type: SchemaTypes.String, ref: DefaultAutor.name }])
     autor:string;
     @Prop({default:null})
     likes:number
