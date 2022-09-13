@@ -43,7 +43,7 @@ export class DefaultCitationController {
         }
         for(let a in data){
         
-          
+           
           await this.s.create(data[a])
             .then(()=>{
              return {success:true,message:"Citation with success !"}
@@ -76,7 +76,7 @@ const author=await this.s_aut.findAll()
   this.arrAut.reverse().splice(1,5)
   this.arrCit=dataCit
   
- return this.arrCit
+ return [this.arrCit,this.arrAut];
 }
  @Put("/likes/:id")
  async likes(@Param("id") id:string,@Body() updateDefaultCitation:UpdateDefaultCitation){
@@ -91,6 +91,7 @@ const author=await this.s_aut.findAll()
     @Get('/favorites')
     async getFavorite(){
        let  data:any=[]
+       const authors=await this.s_aut.findAll()
         const list=await this.s.favoritesCitation()
            data=list
         data.sort((_val1:any,_val2:any)=>{
@@ -107,7 +108,7 @@ const author=await this.s_aut.findAll()
              
         })
         data.splice(1,80)
-        return data.reverse()
+        return [data.reverse(),authors]
       }
 }
 
