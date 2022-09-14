@@ -108,7 +108,7 @@ const author=await this.s_aut.findAll()
              
         })
         data.splice(1,80)
-        return [data.reverse(),authors]
+        return data.reverse()
       }
 }
 
