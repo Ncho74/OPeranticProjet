@@ -107,8 +107,9 @@ const author=await this.s_aut.findAll()
              
              
         })
-        data.splice(1,80)
-        return data.reverse()
+      data.reverse()
+        data.splice(20,80)
+        return data
       }
 }
 
