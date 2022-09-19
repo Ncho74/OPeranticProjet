@@ -126,6 +126,9 @@ async resetPassword(@Param("id") id:any,@Body() data:any){
       }
       const {id}=data
       const result=await this.adminService.findId(id)
+      if(!result){
+         throw new BadRequestException("Token Invalid")
+      }
       return result
      }
      catch(e){

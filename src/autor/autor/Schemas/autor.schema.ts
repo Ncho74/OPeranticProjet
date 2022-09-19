@@ -14,7 +14,7 @@ export class Autor{
     dateDeces_aut:string;
     @Prop({required:true})
     lieuNaiss_aut:string;
-    @Prop({required:true})
+    @Prop()
     histPart_aut:string;
     @Prop({required:true})
     bio_aut:string;
